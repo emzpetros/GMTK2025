@@ -12,7 +12,7 @@ public class TrueBlock : MonoBehaviour, IBlock {
         Debug.Log(collision.gameObject.name);
         if(collision.gameObject.name == "Player") {
             Player.Instance.SetItem(trueBlock);
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 

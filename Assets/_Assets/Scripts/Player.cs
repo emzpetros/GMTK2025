@@ -54,7 +54,6 @@ public class Player : MonoBehaviour
     private void Update() {
         if(!canAttack) {
             attackCooldown -= Time.deltaTime;
-            Debug.Log("On cooldown");
             if (attackCooldown < 0) {
                 canAttack = true;
             }
