@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
 
     private float moveInput;
 
-    private const int MOVE_SPEED = 10;
-    private const int JUMP_POWER = 400;
+    private const int MOVE_SPEED = 5;
+    private const int JUMP_POWER = 450;
     private const float GROUND_CHECK_RADIUS = 0.2f;
     private const float ATTACK_COOLDOWN = 1.5f;
     private float attackTimer = ATTACK_COOLDOWN;
