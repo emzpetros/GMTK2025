@@ -20,10 +20,17 @@ public class SceneController : MonoBehaviour
     }
 
     private void Start() {
-        blockSLot.GetComponent<CodeLineInteractable>().OnSuccess += CodeLine_OnSucess;
         script = blockSLot.GetComponent<CodeLineInteractable>();  
     }
+    public void CodeLine_OnSuccess(bool value) {
 
+        SetSpawner(value);
+    }
+
+    public void ChangeSpawnInterval(float interval) {
+        spawner.GetComponent<Spawner>().SetTimer(interval);
+        Debug.Log(interval);
+    }
     private void CodeLine_OnSucess(object sender, EventArgs e) {
         CodeLineInteractable codeLine = (CodeLineInteractable) sender;
 
@@ -50,4 +57,6 @@ public class SceneController : MonoBehaviour
     public void SetSpawner(bool state) {
         spawner.SetActive(state);
     }
+
+
 }

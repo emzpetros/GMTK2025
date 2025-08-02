@@ -4,17 +4,21 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform enemeyPrefab;
 
-    private const float spawnInterval = 2f;
-    private float spawnTimer = spawnInterval;
-    private int spawnMax = 3;
+    private float spawnInterval = 5f;
+    private float spawnTimer;
+    private int spawnMax = 5;
     private int spawnCount = 0;
-    
+
+    private void Start() {
+        spawnTimer = spawnInterval;
+    }
 
     private void Update() {
         if(spawnCount < spawnMax) {
             spawnTimer -= Time.deltaTime;
             if (spawnTimer <= 0) {
                 Spawn();
+                spawnTimer = spawnMax;
             }
         }
 
@@ -23,5 +27,9 @@ public class Spawner : MonoBehaviour
     private void Spawn() {
         Instantiate(enemeyPrefab, this.transform);
         spawnCount++;
+    }
+
+    public void SetTimer(float interval) {
+        spawnInterval = interval;
     }
 }

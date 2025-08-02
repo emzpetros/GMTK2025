@@ -5,8 +5,13 @@ using TMPro;
 using UnityEditor.Animations;
 
 [ExecuteInEditMode]
+
+public enum Interactable { None, Boolean, Number }
 public class CodeController : MonoBehaviour {
     [SerializeField] private GameObject codeLinePrefab;
+    [SerializeField] private GameObject booleanCodeLinePrefab;
+    [SerializeField] private GameObject numberCodeLinePrefab;
+
     [SerializeField] private List<string> codeLines = new List<string>{
         "while(true)", 
         "\t//Author: **** ******", 
@@ -26,81 +31,90 @@ public class CodeController : MonoBehaviour {
         "if(false) spawn enemy"
     };
 
+    [SerializeField] private Interactable[] interactableStatus;
+
     private TextMeshProUGUI[] childrenTmp;
     private int childrenCount;
 
+    private List<GameObject> currentCodeLines = new List<GameObject>();
+
 
     private void Start() {
-        /*foreach (Transform child in this.GetComponentInChildren<Transform>()) {
-                Destroy(child.gameObject);
 
-        }*/
-        TextMeshProUGUI[] childrenTmp = GetComponentsInChildren<TextMeshProUGUI>();
-        int childrenCount = childrenTmp.Length;
+/*        ClearCodeLines();
+        GenerateCodeLines();*/
+        //UpdateCodeLines();
 
-        UpdateCodeLines();
 
-/*        foreach (var line in codeLines) {
-            GameObject child = Instantiate(codeLinePrefab, this.transform);
-            //Debug.Log(line);
-            child.GetComponentInChildren<TextMeshProUGUI>().text = line;
-
-        }*/
     }
 
-    public void UpdateCodeLines() {
-
-        //  TextMeshProUGUI[] childrenTmp = GetComponentsInChildren<TextMeshProUGUI>();
-        //int childrenCount = childrenTmp.Length;
-
-
-        //Debug.LogError("For " + codeLines.Count + " code lines we have " + childrenCount + " child objects");
+    private void ClearCodeLines() {
         TextMeshProUGUI[] childrenTmp = GetComponentsInChildren<TextMeshProUGUI>();
         int childrenCount = childrenTmp.Length;
+
+        foreach (var child in childrenTmp) {
+            Destroy(child.gameObject);
+        }
+    }
+  /*  public void UpdateCodeLines() {
+        CodeLine[] codeLineScripts = GetComponentsInChildren<CodeLine>();
+        int childrenCount = codeLineScripts.Length;
 
         for (int i = 0; i < childrenCount; i++) {
-            TextMeshProUGUI child = childrenTmp[i];
+            CodeLine script = codeLineScripts[i];
+            TextMeshProUGUI child = script.GetComponentInChildren<TextMeshProUGUI>();
             child.text = codeLines[i];
             //Debug.Log(child.gameObject.name);
-            child.gameObject.GetComponentInParent<CodeLine>().UpdateSize();
+            script.UpdateSize();
         }
-        //Debug.Log("udpates");
+
     }
-/*    public void GenerateCodeLines() {
-        //TextMeshProUGUI[] childrenTmp = GetComponentsInChildren<TextMeshProUGUI>();
-        //int childrenCount = childrenTmp.Length;
-        for (int i = 0; i < codeLines.Count - childrenCount; i++) {
-            GameObject codeLineObject = Instantiate(codeLinePrefab, this.transform);
-
-        }
-
-    }*/
-
+   */
     public void GenerateCodeLines() {
-        // 1. Find all existing code line children
-        List<GameObject> codeLineChildren = new List<GameObject>();
-        foreach (Transform child in transform)
-            codeLineChildren.Add(child.gameObject);
-
-        // 2. Add if not enough
-        while (codeLineChildren.Count < codeLines.Count) {
-            var codeLineObj = Instantiate(codeLinePrefab, transform);
-            codeLineChildren.Add(codeLineObj);
-        }
-
-        // 3. Remove extra
-        while (codeLineChildren.Count > codeLines.Count) {
-            var toRemove = codeLineChildren[codeLineChildren.Count - 1];
+        ClearCodeLines() ;
+        // Clear previous lines
+        foreach (var obj in currentCodeLines) {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
-                DestroyImmediate(toRemove);
+                DestroyImmediate(obj);
             else
-                Destroy(toRemove);
+                Destroy(obj);
 #else
-            Destroy(toRemove);
+            Destroy(obj);
 #endif
-            codeLineChildren.RemoveAt(codeLineChildren.Count - 1);
+        }
+        currentCodeLines.Clear();
+
+        for (int i = 0; i < codeLines.Count; i++) {
+            GameObject prefabToUse;
+
+            // Safety check if interactableStatus length matches
+            if (interactableStatus != null && i < interactableStatus.Length) {
+                switch (interactableStatus[i]) {
+                    case Interactable.Boolean:
+                        prefabToUse = booleanCodeLinePrefab;
+                        break;
+                    case Interactable.Number:
+                        prefabToUse = numberCodeLinePrefab;
+                        break;
+                    case Interactable.None:
+                    default:
+                        prefabToUse = codeLinePrefab;
+                        break;
+                }
+            } else {
+                prefabToUse = codeLinePrefab;
+            }
+
+            GameObject lineObj = Instantiate(prefabToUse, transform);
+            // Optionally set text on your prefab's TextMeshPro component if needed, e.g.:
+            var tmp = lineObj.GetComponentInChildren<TextMeshProUGUI>();
+            if (tmp != null) tmp.text = codeLines[i];
+
+            lineObj.GetComponentInChildren<CodeLine>().UpdateSize();
+            currentCodeLines.Add(lineObj);
         }
     }
+
 
 }

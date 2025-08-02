@@ -12,11 +12,11 @@ public class EditorTools : Editor {
         if (GUILayout.Button("Spawn Code Prefabs")) {
             controller.GenerateCodeLines();
         }
-
+/*
         if (GUILayout.Button("Update Code Lines")) {
             controller.UpdateCodeLines();
         }
-
+*/
 
     }
 
