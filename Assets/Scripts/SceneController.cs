@@ -4,7 +4,7 @@ using System;
 public class SceneController : MonoBehaviour
 {
     [SerializeField] private GameObject spawner;
-    [SerializeField] private GameObject blockSLot;
+    //[SerializeField] private GameObject blockSLot;
 /*    public class OnSuccessEventArgsBool : EventArgs {
         public bool value;
     }
@@ -20,7 +20,7 @@ public class SceneController : MonoBehaviour
     }
 
     private void Start() {
-        script = blockSLot.GetComponent<CodeLineInteractable>();  
+        //script = blockSLot.GetComponent<CodeLineInteractable>();  
     }
     public void CodeLine_OnSuccess(bool value) {
 

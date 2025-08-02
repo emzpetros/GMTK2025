@@ -6,11 +6,12 @@ using UnityEditor.Animations;
 
 [ExecuteInEditMode]
 
-public enum Interactable { None, Boolean, Number }
+public enum Interactable { None, Boolean, Number , Platforms}
 public class CodeController : MonoBehaviour {
     [SerializeField] private GameObject codeLinePrefab;
     [SerializeField] private GameObject booleanCodeLinePrefab;
     [SerializeField] private GameObject numberCodeLinePrefab;
+    [SerializeField] private GameObject platformCodeLinePrefab;
 
     [SerializeField] private List<string> codeLines = new List<string>{
         "while(true)", 
@@ -104,6 +105,9 @@ public class CodeController : MonoBehaviour {
                     case Interactable.Number:
                         prefabToUse = numberCodeLinePrefab;
                         break;
+                    case Interactable.Platforms:
+                        prefabToUse = platformCodeLinePrefab;
+                        break;
                     case Interactable.None:
                     default:
                         prefabToUse = codeLinePrefab;
@@ -118,7 +122,10 @@ public class CodeController : MonoBehaviour {
             var tmp = lineObj.GetComponentInChildren<TextMeshProUGUI>();
             if (tmp != null) tmp.text = codeLines[i];
 
-            lineObj.GetComponentInChildren<CodeLine>().UpdateSize();
+            if (interactableStatus[i] != Interactable.Platforms) {
+
+                lineObj.GetComponentInChildren<CodeLine>().UpdateSize();
+            }
             currentCodeLines.Add(lineObj);
         }
     }
