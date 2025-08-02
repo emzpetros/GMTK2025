@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private float moveInput;
 
     private const int MOVE_SPEED = 5;
-    private const int JUMP_POWER = 450;
+    private const int JUMP_POWER = 430;
     private const float GROUND_CHECK_RADIUS = 0.2f;
     private const float ATTACK_COOLDOWN = 1.5f;
     private float attackTimer = ATTACK_COOLDOWN;
@@ -84,6 +84,8 @@ public class Player : MonoBehaviour
         }
     }
     private void Update() {
+
+        Debug.Log(rigidBody.linearVelocity);
         if(!canAttack) {
             attackTimer -= Time.deltaTime;
             if (attackTimer < 0) {

@@ -9,9 +9,9 @@ public class EditorTools : Editor {
 
         CodeController controller = (CodeController)target;
 
-        if (GUILayout.Button("Spawn Code Prefabs")) {
+   /*     if (GUILayout.Button("Spawn Code Prefabs")) {
             controller.GenerateCodeLines();
-        }
+        }*/
 /*
         if (GUILayout.Button("Update Code Lines")) {
             controller.UpdateCodeLines();
