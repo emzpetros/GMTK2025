@@ -1,16 +1,23 @@
 using UnityEngine;
+using System;
+using TMPro;
 
 public class CodeLineInteractable : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private BlockType validType;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private TextMeshProUGUI textMeshPro;
+
+    private void Start() {
+        textMeshPro = GetComponent<TextMeshProUGUI>();
+    }
+    public bool TrySetText(IBlock block) {
+        bool valid = block.GetBlockType() == validType; 
+
+        if(valid) {
+            textMeshPro.text = block.GetValue().ToString();
+        }
+
+        return valid;
     }
 }

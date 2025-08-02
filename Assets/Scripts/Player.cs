@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public static Player Instance { get; private set; }
 
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform InteractCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask interactLayer;
 
@@ -21,7 +22,8 @@ public class Player : MonoBehaviour
     private const int MOVE_SPEED = 10;
     private const int JUMP_POWER = 600;
     private const float GROUND_CHECK_RADIUS = 0.2f;
-    private float attackCooldown = 1.5f;
+    private const float ATTACK_COOLDOWN = 1.5f;
+    private float attackTimer = ATTACK_COOLDOWN;
 
 
     private bool grounded = true;
@@ -45,11 +47,29 @@ public class Player : MonoBehaviour
     }
 
     private void GameInput_OnItemInput(object sender, EventArgs e) {
-        if(Physics2D.OverlapCircle(groundCheck.position, GROUND_CHECK_RADIUS, interactLayer)) {
-            Debug.Log("Use item");
+
+        if(item != null){
+            Collider2D collider = Physics2D.OverlapCircle(InteractCheck.position, GROUND_CHECK_RADIUS, interactLayer);
+            bool hit = collider != null; // true if something was found
+            CodeLineInteractable blockSlot = null;
+
+            if (hit) {
+                blockSlot = collider.gameObject.GetComponent<CodeLineInteractable>();
+                bool itemUsed = blockSlot.TrySetText(item);
+                if (itemUsed) {
+                    item = null;
+                    Debug.Log("item used");
+                } else {
+                    Debug.Log("item invalid");
+                }
+            } else {
+                Debug.Log("not on an interactable area");
+            }
         } else {
-            Debug.Log("not on an interactable area");
+            Debug.Log("No item");
         }
+
+ 
 
         
     }
@@ -62,9 +82,10 @@ public class Player : MonoBehaviour
     }
     private void Update() {
         if(!canAttack) {
-            attackCooldown -= Time.deltaTime;
-            if (attackCooldown < 0) {
+            attackTimer -= Time.deltaTime;
+            if (attackTimer < 0) {
                 canAttack = true;
+                attackTimer = ATTACK_COOLDOWN;
             }
         }
 

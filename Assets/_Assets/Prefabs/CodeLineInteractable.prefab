@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4658786602388597893}
   - component: {fileID: 493290561240069815}
   - component: {fileID: 4159971919381474048}
-  m_Layer: 6
+  - component: {fileID: 1833376621414080629}
+  m_Layer: 7
   m_Name: BlockSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 210, y: 0}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4658786602388597893
@@ -181,8 +182,21 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 300, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &1833376621414080629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169344133877920195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d8254fecb5d9247ad8a50b1962eb7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  validType: 0
 --- !u!1001 &5425641762287979468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,7 +291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8734136246653034621, guid: 41aafd8bc9aecc1469cc2e7bd7ac9bb5, type: 3}
       propertyPath: m_text
-      value: '//Test comment with ( false ) text '
+      value: '//Test comment with ( ____ ) text '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
