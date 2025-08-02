@@ -9,11 +9,14 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask interactLayer;
 
     private GameInput gameInput;
 
     private Rigidbody2D rigidBody;
     private IBlock item = null;
+
+    private float moveInput;
 
     private const int MOVE_SPEED = 10;
     private const int JUMP_POWER = 600;
@@ -42,7 +45,13 @@ public class Player : MonoBehaviour
     }
 
     private void GameInput_OnItemInput(object sender, EventArgs e) {
-        Debug.Log("Use item");
+        if(Physics2D.OverlapCircle(groundCheck.position, GROUND_CHECK_RADIUS, interactLayer)) {
+            Debug.Log("Use item");
+        } else {
+            Debug.Log("not on an interactable area");
+        }
+
+        
     }
 
     private void GameInput_OnAttackInput(object sender, EventArgs e) {
@@ -83,7 +92,7 @@ public class Player : MonoBehaviour
     }
 
     private void HandleMovement() {
-        float moveInput = gameInput.GetMovementInput();
+        moveInput = gameInput.GetMovementInput();
         rigidBody.linearVelocityX = moveInput * MOVE_SPEED;
 
     }
@@ -96,5 +105,8 @@ public class Player : MonoBehaviour
         this.item = item;
     }
 
+    public float GetMoveInput() {
+        return moveInput;
+    }
 
 }

@@ -1,17 +1,16 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TrueBlock : MonoBehaviour, IBlock {
-    private BooleanBlock trueBlock;
+public class FalseBlock : MonoBehaviour, IBlock {
+    private BooleanBlock falseBlock;
 
     private void Start() {
-        trueBlock = new BooleanBlock(true);
+        falseBlock = new BooleanBlock(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log(collision.gameObject.name);
-        if(collision.gameObject.name == "Player") {
-            Player.Instance.SetItem(trueBlock);
+        if (collision.gameObject.name == "Player") {
+            Player.Instance.SetItem(falseBlock);
             Destroy(this.gameObject);
         }
     }
