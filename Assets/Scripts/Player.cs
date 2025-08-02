@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
+    public EventHandler OnJump;
+    public EventHandler OnLand;
+
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform InteractCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -102,6 +105,9 @@ public class Player : MonoBehaviour
         bool wasGrounded = grounded;
         grounded = Physics2D.OverlapCircle(groundCheck.position, GROUND_CHECK_RADIUS, groundLayer);
 
+        if (grounded && !wasGrounded) {
+            OnLand?.Invoke(this, EventArgs.Empty);
+        }
         HandleMovement();
 
         if(grounded && jump) {
@@ -120,6 +126,7 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnJumpInput(object sender, EventArgs e) {
         jump = true;
+        OnJump?.Invoke(this, EventArgs.Empty);
     }
 
     public void SetItem(IBlock item) {
