@@ -69,8 +69,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: false
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cebe70b3ab726f94b8ab90f79e2a915c, type: 2}
+  m_sharedMaterial: {fileID: -5646351850217504942, guid: cebe70b3ab726f94b8ab90f79e2a915c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -199,7 +199,6 @@ MonoBehaviour:
   OnSuccessEvent:
     m_PersistentCalls:
       m_Calls: []
-  validType: 0
 --- !u!1001 &5425641762287979468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -295,6 +294,10 @@ PrefabInstance:
     - target: {fileID: 8734136246653034621, guid: 41aafd8bc9aecc1469cc2e7bd7ac9bb5, type: 3}
       propertyPath: m_text
       value: '//Test comment with ( ____ ) text '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8734136246653034621, guid: 41aafd8bc9aecc1469cc2e7bd7ac9bb5, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

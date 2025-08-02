@@ -49,11 +49,18 @@ public class CodeController : MonoBehaviour {
     }
 
     private void ClearCodeLines() {
-        TextMeshProUGUI[] childrenTmp = GetComponentsInChildren<TextMeshProUGUI>();
+        CodeLine[] childrenTmp = GetComponentsInChildren<CodeLine>();
         int childrenCount = childrenTmp.Length;
 
         foreach (var child in childrenTmp) {
-            Destroy(child.gameObject);
+#if UNITY_EDITOR
+            if (!Application.isPlaying)
+                DestroyImmediate(child.gameObject);
+            else
+                Destroy(child.gameObject);
+#else
+            Destroy(obj);
+#endif
         }
     }
   /*  public void UpdateCodeLines() {
