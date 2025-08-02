@@ -89,13 +89,13 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.E)) { 
+/*        if(Input.GetKeyDown(KeyCode.E)) { 
             if(item != null) {
                 Debug.Log(item.GetValue().ToString() + item.GetBlockType());
             } else {
                 Debug.Log("null");
             }
-        }
+        }*/
     }
 
     private void FixedUpdate() {
