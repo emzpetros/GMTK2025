@@ -168,15 +168,15 @@ public class Player : MonoBehaviour
 
         // Debug.Log(rigidBody.linearVelocity);
 
-        if (Input.GetKeyDown(KeyCode.E)) {
+  /*      if (Input.GetKeyDown(KeyCode.E)) {
             OnDeath?.Invoke(this, EventArgs.Empty); 
-            /*if (item != null) {
+            *//*if (item != null) {
                 Debug.Log(item.GetValue().ToString() + item.GetBlockType());
             }
             else {
                 Debug.Log("null");
-            }*/
-        }
+            }*//*
+        }*/
     }
 
     private void FixedUpdate() {
