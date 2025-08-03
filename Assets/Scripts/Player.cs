@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     public EventHandler OnJump;
     public EventHandler OnLand;
+    public EventHandler OnDeath;
 
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform InteractCheck;
@@ -115,15 +116,17 @@ public class Player : MonoBehaviour
     }
     private void Update() {
 
-       // Debug.Log(rigidBody.linearVelocity);
+        // Debug.Log(rigidBody.linearVelocity);
 
-        /*        if(Input.GetKeyDown(KeyCode.E)) { 
-                    if(item != null) {
-                        Debug.Log(item.GetValue().ToString() + item.GetBlockType());
-                    } else {
-                        Debug.Log("null");
-                    }
-                }*/
+        if (Input.GetKeyDown(KeyCode.E)) {
+            OnDeath?.Invoke(this, EventArgs.Empty); 
+            /*if (item != null) {
+                Debug.Log(item.GetValue().ToString() + item.GetBlockType());
+            }
+            else {
+                Debug.Log("null");
+            }*/
+        }
     }
 
     private void FixedUpdate() {
@@ -169,4 +172,7 @@ public class Player : MonoBehaviour
         canJump = value;
     }
 
+    public void death() {
+        OnDeath?.Invoke(this, EventArgs.Empty);
+    }
 }

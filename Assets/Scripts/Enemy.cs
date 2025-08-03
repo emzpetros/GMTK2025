@@ -3,10 +3,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
     private SpriteRenderer sprite;
 
-    public float speed = 2f;              // Movement speed, adjustable in Inspector
+    public float speed = 0.5f;              // Movement speed, adjustable in Inspector
     public float distance = 3f;           // Distance to move from start point
-    public float minSwitchTime = 1f;      // Minimum time before switching direction
-    public float maxSwitchTime = 3f;      // Maximum time before switching direction
+    public float minSwitchTime = 3f;      // Minimum time before switching direction
+    public float maxSwitchTime = 5f;      // Maximum time before switching direction
 
     private Vector3 startPos;
     private int direction = 1;            // 1 for right, -1 for left
@@ -50,5 +50,11 @@ public class Enemy : MonoBehaviour {
         // Clamp position to stay within allowed range
         float clampedX = Mathf.Clamp(transform.position.x, startPos.x - distance, startPos.x + distance);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.name == "Player") {
+            Player.Instance.death();
+        }
     }
 }
