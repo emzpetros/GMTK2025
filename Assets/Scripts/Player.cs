@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private const int JUMP_POWER = 440;
     private const float GROUND_CHECK_RADIUS = 0.2f;
     private const float ATTACK_COOLDOWN = 1.5f;
-    private float attackTimer = ATTACK_COOLDOWN;
+    //private float attackTimer = ATTACK_COOLDOWN;
 
 
     private bool grounded = true;
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
     }
     private void Update() {
 
-        Debug.Log(rigidBody.linearVelocity);
+       // Debug.Log(rigidBody.linearVelocity);
 
         /*        if(Input.GetKeyDown(KeyCode.E)) { 
                     if(item != null) {
