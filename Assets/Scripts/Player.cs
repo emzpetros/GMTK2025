@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     private bool grounded = true;
     private bool jump = false;
     private bool canAttack = true;
-    private float shiftAmount = 0.5f;
+    //private float shiftAmount = 0.5f;
     private const float PLAYER_ACTIVE_DELAY = 2f;
 
     private bool canUncomment = false;

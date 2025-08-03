@@ -15,11 +15,10 @@ public class PlayerAnimator : MonoBehaviour
     private const string ATTACK_VAR = "attack";
         
  
-    private void Awake() {
-        animator = GetComponent<Animator>();
-
-    }
+   
     private void Start() {
+
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         Player.Instance.OnJump += Player_OnJump;
