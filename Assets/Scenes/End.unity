@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 72050461}
   - component: {fileID: 72050463}
   - component: {fileID: 72050462}
+  - component: {fileID: 72050464}
   m_Layer: 5
   m_Name: Credits
   m_TagString: Untagged
@@ -270,6 +271,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72050460}
   m_CullTransparentMesh: 1
+--- !u!114 &72050464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72050460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74383bc8d568f414890a551fe05058ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 100
 --- !u!1 &274247941
 GameObject:
   m_ObjectHideFlags: 0

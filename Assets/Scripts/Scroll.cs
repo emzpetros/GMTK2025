@@ -1,16 +1,22 @@
 using UnityEngine;
 
-public class Scroll : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+public class UIScrollDown : MonoBehaviour {
+    [Tooltip("Speed at which the UI object scrolls down (units per second)")]
+    public float scrollSpeed = 100f;
+
+    private RectTransform rectTransform;
+
+    void Awake() {
+        rectTransform = GetComponent<RectTransform>();
+        if (rectTransform == null) {
+            Debug.LogError("UIScrollDown script must be attached to a UI object with RectTransform.");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+        if (rectTransform != null) {
+            // Move downward by scrollSpeed pixels per second
+            rectTransform.anchoredPosition -= Vector2.down * scrollSpeed * Time.deltaTime;
+        }
     }
 }
