@@ -5,7 +5,7 @@ public class NumBlock : MonoBehaviour, IBlock {
     private NumberBlock numBlock;
 
     private void Start() {
-        numBlock = new NumberBlock(1);
+        numBlock = new NumberBlock(Random.Range(0,10));
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

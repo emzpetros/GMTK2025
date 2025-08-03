@@ -1,7 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     private SpriteRenderer sprite;
+    private Animator animator;
+    [SerializeField] private Transform trueBlockPrefab;
+    [SerializeField] private Transform falseBlockPrefab;
+    [SerializeField] private Transform numBlockPrefab;
+
+    [Header("Drop Rates (they must add up to 1.0 or 100%)")]
+    [Range(0, 1)] public float trueBlockChance = 0.3f;   // Example: 30%
+    [Range(0, 1)] public float falseBlockChance = 0.4f;  // Example: 40%
+    // The remainder is for numBlockPrefab
 
     public float speed = 0.5f;              // Movement speed, adjustable in Inspector
     public float distance = 3f;           // Distance to move from start point
@@ -14,6 +24,7 @@ public class Enemy : MonoBehaviour {
 
     void Start() {
         sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         startPos = transform.position;
         SetRandomSwitchTime();
     }
@@ -59,6 +70,35 @@ public class Enemy : MonoBehaviour {
     }
 
     public void death() {
+        StartCoroutine(DeathEffects());
+
+
        //animate, drop item
+    }
+
+    IEnumerator DeathEffects() {
+        animator.SetBool("death", true);
+        yield return new WaitForSeconds(1f);
+        DropRandomBlock(); // Spawn one of the prefabs here
+
+        Destroy(this.gameObject);
+    }
+
+    private void DropRandomBlock() {
+        float rand = Random.value; // value between 0 and 1
+
+        Transform prefabToDrop = null;
+        if (rand < trueBlockChance) {
+            prefabToDrop = trueBlockPrefab;
+        }
+        else if (rand < trueBlockChance + falseBlockChance) {
+            prefabToDrop = falseBlockPrefab;
+        }
+        else {
+            prefabToDrop = numBlockPrefab;
+        }
+
+        if (prefabToDrop != null)
+            Instantiate(prefabToDrop, transform.position, Quaternion.identity);
     }
 }

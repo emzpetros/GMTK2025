@@ -11,13 +11,17 @@ public class Player : MonoBehaviour
     public EventHandler OnJump;
     public EventHandler OnLand;
     public EventHandler OnDeath;
-    public EventHandler OnAllowedAttack;
-    public EventHandler OnAttackCooldown;
+    public EventHandler OnAttackedEnemy;
+    public EventHandler OnAttackedBreak;
+
+    public EventHandler OnAttack;
 
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform InteractCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask interactLayer;
+
+    [SerializeField] private Transform attackPoint;
 
 
     private GameInput gameInput;
@@ -43,7 +47,7 @@ public class Player : MonoBehaviour
     private bool grounded = true;
     private bool jump = false;
     private bool canAttack = true;
-
+    private float shiftAmount = 0.5f;
     private const float PLAYER_ACTIVE_DELAY = 1f;
 
     private bool canUncomment = false;
@@ -116,18 +120,27 @@ public class Player : MonoBehaviour
     }
 
     private void GameInput_OnAttackInput(object sender, EventArgs e) {
-        if(canAttack) {
-            /*          if{ canUncomment && collidingWithBreak}
-                      {
+        if (canAttack) {
 
-                      }*/
+            CircleCollider2D attackCollider = attackPoint.gameObject.GetComponent<CircleCollider2D>();
+            Collider2D[] hits = Physics2D.OverlapBoxAll(attackCollider.bounds.center, attackCollider.bounds.size, 0f);
             Debug.Log("attack");
-            OnAllowedAttack?.Invoke(this, e);
+            OnAttack?.Invoke(this, e);
+            foreach (var hit in hits) {
+                if (hit.CompareTag("Enemy")) {
+                    hit.GetComponent<Enemy>().death();
+                    Debug.Log("Kill");
+                    OnAttackedEnemy?.Invoke(this, EventArgs.Empty);
+                }
+                else if (hit.CompareTag("Break")) {
+                    Debug.Log("break break");
+                    OnAttackedBreak?.Invoke(this, EventArgs.Empty);
+                }
+            }
             canAttack = false;
+            attackTimer = ATTACK_COOLDOWN;
+        } 
 
-        } else {
-           // OnAttackCooldown?.Invoke(this, e);  
-        }
     }
     private void Update() {
         if (!canAttack) {
@@ -136,6 +149,13 @@ public class Player : MonoBehaviour
                 attackTimer = ATTACK_COOLDOWN;
                 canAttack = true;
             }
+        }
+
+        if (moveInput > 0) {
+            attackPoint.transform.localPosition = new Vector3(-0.259f + shiftAmount, -0.054f, 0);
+        }
+        else if (moveInput < 0) {
+            attackPoint.transform.localPosition = new Vector3(-0.259f, -0.054f, 0);
         }
 
         // Debug.Log(rigidBody.linearVelocity);

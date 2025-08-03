@@ -12,7 +12,7 @@ public class Attack : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Player.Instance.OnAllowedAttack += Player_AllowedAttack;
+        //Player.Instance.OnAllowedAttack += Player_AllowedAttack;
         //Player.Instance.OnAttackCooldown += Player_AttackCooldown;
     }
 
