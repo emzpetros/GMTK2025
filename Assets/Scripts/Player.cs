@@ -3,6 +3,8 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEditor.Events;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class Player : MonoBehaviour
     public EventHandler OnDeath;
     public EventHandler OnAttackedEnemy;
     public EventHandler OnAttackedBreak;
+    public EventHandler OnItemUsed;
+    public EventHandler OnItemInvalid;
+
+    public UnityEvent<string> OnItemPickedUp;
 
     public EventHandler OnAttack;
 
@@ -36,11 +42,11 @@ public class Player : MonoBehaviour
     private const int MOVE_SPEED = 3;
     private const int JUMP_POWER = 440;
     private const float GROUND_CHECK_RADIUS = 0.2f;
-    private const float ATTACK_COOLDOWN = 0.5f;
+    private const float ATTACK_COOLDOWN = 0.01f;
     private float attackTimer = ATTACK_COOLDOWN;
     private bool canJump = false;
     private float jumpLevelIndex = 2;
-    private float[] jumpLevels = { 0,350f,400f,440f, 500f, 550f, 600f, 650f, 700f, 750f};
+    private float[] jumpLevels = { 0,350f,400f,440f, 550f, 600f, 750f, 800f, 850f, 900f};
     //private float attackTimer = ATTACK_COOLDOWN;
 
 
@@ -48,7 +54,7 @@ public class Player : MonoBehaviour
     private bool jump = false;
     private bool canAttack = true;
     private float shiftAmount = 0.5f;
-    private const float PLAYER_ACTIVE_DELAY = 1f;
+    private const float PLAYER_ACTIVE_DELAY = 2f;
 
     private bool canUncomment = false;
     private void Awake() {
@@ -103,9 +109,12 @@ public class Player : MonoBehaviour
                     bool itemUsed = blockSlot.TrySetText(item);
                 if (itemUsed) {
                     item = null;
+                    OnItemUsed?.Invoke(this, EventArgs.Empty);
                     Debug.Log("item used");
+
                 } else {
                     Debug.Log("item invalid");
+                    OnItemInvalid?.Invoke(this, EventArgs.Empty);   
                 }
             } else {
                 Debug.Log("not on an interactable area");
@@ -153,7 +162,7 @@ public class Player : MonoBehaviour
         }
 
         if (moveInput > 0) {
-            attackPoint.transform.localPosition = new Vector3(-0.397f + shiftAmount, -0.054f, 0);
+            attackPoint.transform.localPosition = new Vector3(+0.397f, -0.054f, 0);
         }
         else if (moveInput < 0) {
             attackPoint.transform.localPosition = new Vector3(-0.397f, -0.054f, 0);
@@ -204,6 +213,7 @@ public class Player : MonoBehaviour
     }
 
     public void SetItem(IBlock item) {
+        OnItemPickedUp?.Invoke(item.GetValue().ToString().ToLower());
         this.item = item;
     }
 

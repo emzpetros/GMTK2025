@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class TriggerRock : MonoBehaviour
@@ -9,6 +10,14 @@ public class TriggerRock : MonoBehaviour
         if(collision.gameObject.name == "Player")
         {
             rock.GetComponent<Rigidbody2D>().simulated = true;
+            StartCoroutine(PlaySound());
         }
+    }
+
+    IEnumerator PlaySound() {
+
+        rock.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(1.5f);
+        rock.GetComponent<AudioSource>().Stop();
     }
 }

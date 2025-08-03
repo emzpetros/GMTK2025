@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
+    public static event EventHandler OnAnyEnemeyRun;
+    public static event EventHandler OnAnyEnemyDeath;
+
     private SpriteRenderer sprite;
     private Animator animator;
     [SerializeField] private Transform trueBlockPrefab;
@@ -9,14 +13,14 @@ public class Enemy : MonoBehaviour {
     [SerializeField] private Transform numBlockPrefab;
 
     [Header("Drop Rates (they must add up to 1.0 or 100%)")]
-    [Range(0, 1)] public float trueBlockChance = 0.3f;   // Example: 30%
-    [Range(0, 1)] public float falseBlockChance = 0.4f;  // Example: 40%
+    [Range(0, 1)] public float trueBlockChance = 0.15f;   // Example: 30%
+    [Range(0, 1)] public float falseBlockChance = 0.15f;  // Example: 40%
     // The remainder is for numBlockPrefab
 
-    private float speed = 0.5f;              // Movement speed, adjustable in Inspector
+    private float speed = 0.4f;              // Movement speed, adjustable in Inspector
     private float distance = 3f;           // Distance to move from start point
     private float minSwitchTime = 3f;      // Minimum time before switching direction
-    private float maxSwitchTime = 5f;      // Maximum time before switching direction
+    private float maxSwitchTime = 10f;      // Maximum time before switching direction
 
     private Vector3 startPos;
     private int direction = 1;            // 1 for right, -1 for left
@@ -55,12 +59,14 @@ public class Enemy : MonoBehaviour {
                 direction *= -1; // Switch direction randomly
                 SetRandomSwitchTime();
             }
+
+            OnAnyEnemeyRun?.Invoke(this, EventArgs.Empty);
         }
        
     }
 
     void SetRandomSwitchTime() {
-        switchTimer = Random.Range(minSwitchTime, maxSwitchTime);
+        switchTimer = UnityEngine.Random.Range(minSwitchTime, maxSwitchTime);
     }
 
     void ClampToRange() {
@@ -81,6 +87,7 @@ public class Enemy : MonoBehaviour {
     public void death() {
         alive = false;
         Debug.Log("enemy die");
+        OnAnyEnemyDeath?.Invoke(this, EventArgs.Empty); 
         StartCoroutine(DeathEffects());
 
 
@@ -97,7 +104,7 @@ public class Enemy : MonoBehaviour {
     }
 
     private void DropRandomBlock() {
-        float rand = Random.value; // value between 0 and 1
+        float rand = UnityEngine.Random.value; // value between 0 and 1
 
         Transform prefabToDrop = null;
         if (rand < trueBlockChance) {

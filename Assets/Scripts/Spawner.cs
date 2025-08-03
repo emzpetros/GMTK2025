@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour
 
     private float spawnInterval = 5f;
     private float spawnTimer;
-    private int spawnMax = 5;
+    //private int spawnMax = 5;
     private int spawnCount = 0;
     private float size = 1;
     private void Start() {
@@ -14,13 +14,13 @@ public class Spawner : MonoBehaviour
     }
 
     private void Update() {
-        if(spawnCount < spawnMax) {
+       // if(spawnCount < spawnMax) {
             spawnTimer -= Time.deltaTime;
             if (spawnTimer <= 0) {
                 Spawn();
-                spawnTimer = spawnMax;
+                spawnTimer = spawnInterval;
             }
-        }
+        //}
 
     }
 

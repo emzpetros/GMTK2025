@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class TrueBlock : MonoBehaviour, IBlock {
+    [SerializeField] private GameObject spawnBlock;
     private BooleanBlock trueBlock;
 
     private void Start() {
@@ -11,6 +12,7 @@ public class TrueBlock : MonoBehaviour, IBlock {
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.name == "Player") {
             Player.Instance.SetItem(trueBlock);
+
             Destroy(this.gameObject);
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAnimator : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class PlayerAnimator : MonoBehaviour
     }
     IEnumerator DeathEffects() {
         yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("Death");
         Destroy(transform.parent.gameObject);
     }
     private void Player_OnLand(object sender, EventArgs e) {

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f041d226c45312348b001c1c91bf1543, type: 3}
+  m_Name: AudioClipRefs
+  m_EditorClassIdentifier: 
+  attack: {fileID: 8300000, guid: 05bc51a1f8deb9741992399e84c73d6d, type: 3}
+  jump: {fileID: 8300000, guid: 91d5644460083a1459ef8b7622822aca, type: 3}
+  run: {fileID: 8300000, guid: dba648205fd947641bc0f96ad8b3641e, type: 3}
+  death: {fileID: 8300000, guid: 03b4f319b4bf48b438ece44b947b1563, type: 3}
+  enemyDeath: {fileID: 8300000, guid: a39691ed4bf3bbe4ab34cf48dd8c68f6, type: 3}
+  enemyRun: {fileID: 8300000, guid: 4c246a35c3a64fd4e9fb1a33e5774453, type: 3}
+  success: {fileID: 8300000, guid: 05bc51a1f8deb9741992399e84c73d6d, type: 3}
+  failure: {fileID: 8300000, guid: 91d5644460083a1459ef8b7622822aca, type: 3}
+  pickup: {fileID: 8300000, guid: 03b4f319b4bf48b438ece44b947b1563, type: 3}

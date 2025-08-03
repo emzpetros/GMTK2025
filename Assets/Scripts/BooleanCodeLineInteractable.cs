@@ -4,7 +4,10 @@ using TMPro;
 using UnityEngine.Events;
 
 public class BooleanCodeLineInteracable : MonoBehaviour, IInteractableCodeLine {
-    private bool currentValue = false;
+
+    [SerializeField] private GameObject spawnBlockTrue;
+    [SerializeField] private GameObject spawnPrefabFalse;
+    [SerializeField] private bool currentValue;
 
     public UnityEvent<Boolean> OnSuccessEvent;
 
@@ -24,7 +27,17 @@ public class BooleanCodeLineInteracable : MonoBehaviour, IInteractableCodeLine {
 
 
             bool value = (bool)block.GetValue();
-            OnSuccessEvent?.Invoke(value);
+
+            if (currentValue) {
+
+                Instantiate(spawnBlockTrue, this.transform.position + new Vector3(-2.5f, 0.5f, 0f), Quaternion.identity);
+            }
+            else {
+                Instantiate(spawnPrefabFalse, this.transform.position + new Vector3(-2.5f, 0.5f, 0f), Quaternion.identity);
+            }
+
+            currentValue = value;
+                OnSuccessEvent?.Invoke(value);
         }
         return valid;
 

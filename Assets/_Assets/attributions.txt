@@ -1,0 +1,61 @@
+============================
+         WHILE TRUE
+============================
+
+Software Development
+  Eileen Petros
+
+Sprites & Assets
+  Srikanth Chavali
+
+Game Design
+  Eileen Petros
+  Srikanth Chavali
+  Lindsey Hauck
+
+Special Thanks
+  Ben Alexander
+  James Horwitz
+
+Sound & Music
+  Music by Will Stokan
+
+  Attack:
+    "artninja_cleaver_sword_shing_w_swipe_05042025"
+    by Artninja
+    https://freesound.org/s/803609/
+    License: CC Attribution 4.0
+
+  Run:
+    "Dog running on hardwood floor"
+    by CUeckermann
+    https://freesound.org/s/444819/
+    License: CC Attribution 3.0
+
+  Jump:
+    "Small Bird Flying.wav"
+    by XfiXy8
+    https://freesound.org/s/467294/
+    License: Creative Commons 0 (CC0)
+
+  Player Death:
+    "15-PIG-NUT-CRUNCH"
+    by The_Sample_Workshop
+    https://freesound.org/s/732976/
+    License: Creative Commons 0 (CC0)
+
+  Enemy Death:
+    "Error_01.wav"
+    by distillerystudio
+    https://freesound.org/s/327738/
+    License: CC Attribution 3.0
+
+  Enemy Walk:
+    "run on tile 2 edit"
+    by Luisa_Sanchez
+    https://freesound.org/s/816776/
+    License: Creative Commons 0 (CC0)
+
+============================
+      Thank you for playing!
+============================
