@@ -79,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -172,9 +172,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 9
-        y: 30
-        width: 8
-        height: 11
+        y: 0
+        width: 45
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -193,10 +193,10 @@ TextureImporter:
       name: moth_death_1
       rect:
         serializedVersion: 2
-        x: 16
-        y: 35
-        width: 6
-        height: 6
+        x: 69
+        y: 0
+        width: 45
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,10 +215,10 @@ TextureImporter:
       name: moth_death_2
       rect:
         serializedVersion: 2
-        x: 26
-        y: 22
-        width: 6
-        height: 22
+        x: 129
+        y: 0
+        width: 45
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +237,10 @@ TextureImporter:
       name: moth_death_3
       rect:
         serializedVersion: 2
-        x: 31
-        y: 39
-        width: 6
-        height: 6
+        x: 189
+        y: 0
+        width: 45
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,253 +255,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: moth_death_4
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 0
-        width: 191
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c74b479dc105ebd60800000000000000
-      internalID: 7907846080546780284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 6
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 42759aee76c193210800000000000000
-      internalID: 1313111999066494756
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_6
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 23
-        width: 6
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fa24fb8124a7d9310800000000000000
-      internalID: 1413420282365821615
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_7
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 17
-        width: 6
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 599d5071a9f647310800000000000000
-      internalID: 1401868091620972949
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_8
-      rect:
-        serializedVersion: 2
-        x: 31
-        y: 20
-        width: 6
-        height: 10
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ce6d478f41ce7f620800000000000000
-      internalID: 2807972467500701420
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_9
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 11
-        width: 6
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7ea249e7ae53f2c30800000000000000
-      internalID: 4336744247443335911
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_10
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 6
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 42d2fa2cd47e26c10800000000000000
-      internalID: 2045451501944384804
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_11
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 1
-        width: 6
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 031b77cf971c168b0800000000000000
-      internalID: -5160630968318971600
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_12
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 0
-        width: 11
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b74f3efc9e3d81060800000000000000
-      internalID: 6924517428250801275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_13
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 1
-        width: 6
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d8ea191c270b26fd0800000000000000
-      internalID: -2350122048613667187
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_death_14
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 0
-        width: 6
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 721c3b91acd964010800000000000000
-      internalID: 1172798244316758311
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8934ced987cbeea4bb20b966ebe541a1
     internalID: 0
     vertices: []
     indices: 
@@ -510,7 +268,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      moth_death_0: -2909728250586891692
+      moth_death_1: -2995132444461146918
+      moth_death_2: -247290528911727488
+      moth_death_3: 5866050872331722023
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

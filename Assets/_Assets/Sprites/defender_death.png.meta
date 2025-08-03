@@ -49,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -260,7 +260,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      defender_death_0: 1710836803894590011
+      defender_death_1: -598361632824416113
+      defender_death_2: -1151046394414505725
+      defender_death_3: -3817942995629187601
+      defender_death_4: 7358460182344043294
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
