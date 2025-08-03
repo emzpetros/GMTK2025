@@ -183,47 +183,47 @@ MonoBehaviour:
 
     ============================
 
-    
+
 
     Software
     Development
 
     Eileen Petros
 
-    
+
 
     Sprites & Assets
 
-    Srikanth
-    Chavali
+    Srikanth Chavali
 
-    
 
-    Game Design
+
+    Game
+    Design
 
     Eileen Petros
 
     Srikanth Chavali
 
-    Lindsey
-    Hauck
+    Lindsey Hauck
 
-    
 
-    Special Thanks
+
+    Special
+    Thanks
 
     Ben Alexander
 
     James Horwitz
 
-    
 
-    Sound
-    & Music
 
-    Music by Will Stokan
+    Sound & Music
 
-    
+    Music
+    by Will Stokan
+
+
 
     Attack:
 
@@ -234,14 +234,14 @@ MonoBehaviour:
 
     https://freesound.org/s/803609/
 
-    License: CC Attribution
-    4.0
+    License: CC Attribution 4.0
 
-    
+
 
     Run:
 
-    "Dog running on hardwood floor"
+    "Dog
+    running on hardwood floor"
 
     by CUeckermann
 
@@ -250,48 +250,47 @@ MonoBehaviour:
     License:
     CC Attribution 3.0
 
-    
+
 
     Jump:
 
     "Small Bird Flying.wav"
 
-    by
-    XfiXy8
+    by XfiXy8
 
     https://freesound.org/s/467294/
 
-    License: Creative Commons
-    0 (CC0)
+    License:
+    Creative Commons 0 (CC0)
 
-    
+
 
     Player Death:
 
     "15-PIG-NUT-CRUNCH"
 
-    by The_Sample_Workshop
+    by
+    The_Sample_Workshop
 
     https://freesound.org/s/732976/
 
-    License:
-    Creative Commons 0 (CC0)
+    License: Creative
+    Commons 0 (CC0)
 
-    
+
 
     Enemy Death:
 
     "Error_01.wav"
 
-    by
-    distillerystudio
+    by distillerystudio
 
     https://freesound.org/s/327738/
 
-    License: CC Attribution
-    3.0
+    License:
+    CC Attribution 3.0
 
-    
+
 
     Enemy Walk:
 
@@ -304,12 +303,12 @@ MonoBehaviour:
     License:
     Creative Commons 0 (CC0)
 
-    
+
 
     ============================
 
-    Thank
-    you for playing!
+    Thank you for
+    playing!
 
     ============================'
   m_isRightToLeft: 0
@@ -530,10 +529,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -558,7 +557,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

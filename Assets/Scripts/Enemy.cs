@@ -31,11 +31,17 @@ public class Enemy : MonoBehaviour {
     void Start() {
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        startPos = transform.position;
+
+        float xOffset = UnityEngine.Random.Range(-5f,5f);
+
+        startPos = new Vector3(transform.position.x + xOffset, transform.position.y, transform.position.z);
+
+        transform.position = startPos;
+
         initialDelay = UnityEngine.Random.Range(0f, 2f);
         StartCoroutine(DelayedSwitchTimerStart());
-
     }
+
 
     IEnumerator DelayedSwitchTimerStart() {
         yield return new WaitForSeconds(initialDelay);
@@ -43,18 +49,16 @@ public class Enemy : MonoBehaviour {
     }
 
     void Update() {
-
         if (alive) {
-            // Move the object
-            direction = UnityEngine.Random.value < 0.5f ? 1 : -1;
-
+            // Move the object in the current direction
             transform.position += Vector3.right * direction * speed * Time.deltaTime;
 
+            // Flip sprite for facing direction
             if (direction < 0) {
-                sprite.flipX = false; // Or true, if you want right to be flipped
+                sprite.flipX = false; // Or true if needed
             }
             else if (direction > 0) {
-                sprite.flipX = true;  // Or false, adjust for your art
+                sprite.flipX = true;
             }
 
             // If out of bounds, reverse direction
@@ -67,14 +71,14 @@ public class Enemy : MonoBehaviour {
             // Timer for random direction change
             switchTimer -= Time.deltaTime;
             if (switchTimer <= 0f) {
-                direction *= -1; // Switch direction randomly
+                direction *= -1; // Switch direction randomly (not truly random, just reversal)
                 SetRandomSwitchTime();
             }
 
             OnAnyEnemeyRun?.Invoke(this, EventArgs.Empty);
         }
-       
     }
+
 
     void SetRandomSwitchTime() {
         switchTimer = UnityEngine.Random.Range(minSwitchTime, maxSwitchTime);
