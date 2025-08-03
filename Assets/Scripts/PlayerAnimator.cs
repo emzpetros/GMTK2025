@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
@@ -8,13 +9,24 @@ public class PlayerAnimator : MonoBehaviour
 
     private const string JUMP_VAR = "isJumping";
     private const string MOVE_VAR = "moveInput";
+
+
+
+ 
     private void Awake() {
         animator = GetComponent<Animator>();
+
     }
     private void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
+
         Player.Instance.OnJump += Player_OnJump;
         Player.Instance.OnLand += Player_OnLand;
+
+
+   
+
+
     }
 
     private void Player_OnLand(object sender, EventArgs e) {
@@ -25,7 +37,11 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetBool(JUMP_VAR, true);
     }
 
+    
+
     private void Update() {
+
+
         float moveInput = Player.Instance.GetMoveInput();
 
         if(moveInput < 0) {

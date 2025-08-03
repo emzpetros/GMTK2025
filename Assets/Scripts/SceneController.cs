@@ -1,9 +1,18 @@
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 public class SceneController : MonoBehaviour
 {
+
+    [SerializeField] private GameObject playerPrefab;
+
+    [SerializeField] private Transform spawnPoint;
+
     [SerializeField] private GameObject spawner;
+
+    private bool playerActive = false;
+    private float timer = 5f;
     //[SerializeField] private GameObject blockSLot;
 /*    public class OnSuccessEventArgsBool : EventArgs {
         public bool value;
@@ -12,6 +21,11 @@ public class SceneController : MonoBehaviour
     public class OnSuccessEventArgsNum : EventArgs {
         public int value;
     }*/
+
+
+
+    
+
     private CodeLineInteractable script;
     public static SceneController Instance { get; private set; }
 
@@ -21,6 +35,18 @@ public class SceneController : MonoBehaviour
 
     private void Start() {
         //script = blockSLot.GetComponent<CodeLineInteractable>();  
+
+    }
+
+    private void Update() {
+       /* if (!playerActive) {
+            timer -= Time.deltaTime;
+            if (timer < 0) {
+                Instantiate(playerPrefab, spawnPoint);
+                playerActive = true;
+                Debug.Log("Spawn");
+            }
+        }*/
     }
     public void CodeLine_OnSuccess(bool value) {
 

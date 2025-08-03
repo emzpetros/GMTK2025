@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,11 +19,13 @@ public class Player : MonoBehaviour
     private GameInput gameInput;
 
     private Rigidbody2D rigidBody;
+    private CircleCollider2D circleCollider;
+
     private IBlock item = null;
 
     private float moveInput;
 
-    private const int MOVE_SPEED = 5;
+    private const int MOVE_SPEED = 3;
     private const int JUMP_POWER = 430;
     private const float GROUND_CHECK_RADIUS = 0.2f;
     private const float ATTACK_COOLDOWN = 1.5f;
@@ -33,6 +36,8 @@ public class Player : MonoBehaviour
     private bool jump = false;
     private bool canAttack = true;
 
+    private const float PLAYER_ACTIVE_DELAY = 1f;
+
     private void Awake() {
         if(Instance != null) {
             Debug.LogError("More than one player instance");
@@ -40,6 +45,9 @@ public class Player : MonoBehaviour
         Instance = this;
 
         rigidBody = GetComponent<Rigidbody2D>();
+        //rigidBody.simulated = false;
+        //circleCollider = this.GetComponent<CircleCollider2D>();
+        //circleCollider.enabled = false;
     }
 
     private void Start() {
@@ -47,6 +55,18 @@ public class Player : MonoBehaviour
         gameInput.OnJumpInput += GameInput_OnJumpInput;
         gameInput.OnAttackInput += GameInput_OnAttackInput;
         gameInput.OnItemInput += GameInput_OnItemInput;
+        //StartCoroutine(ActivatePlayer());
+    }
+
+    private IEnumerator ActivatePlayer() {
+
+        yield return new WaitForSeconds(PLAYER_ACTIVE_DELAY);
+
+        circleCollider.enabled = true;
+        rigidBody.simulated = true;
+        Debug.Log("Active");
+        rigidBody.linearVelocity = Vector2.zero;
+
     }
 
     private void GameInput_OnItemInput(object sender, EventArgs e) {
@@ -86,21 +106,14 @@ public class Player : MonoBehaviour
     private void Update() {
 
         Debug.Log(rigidBody.linearVelocity);
-        if(!canAttack) {
-            attackTimer -= Time.deltaTime;
-            if (attackTimer < 0) {
-                canAttack = true;
-                attackTimer = ATTACK_COOLDOWN;
-            }
-        }
 
-/*        if(Input.GetKeyDown(KeyCode.E)) { 
-            if(item != null) {
-                Debug.Log(item.GetValue().ToString() + item.GetBlockType());
-            } else {
-                Debug.Log("null");
-            }
-        }*/
+        /*        if(Input.GetKeyDown(KeyCode.E)) { 
+                    if(item != null) {
+                        Debug.Log(item.GetValue().ToString() + item.GetBlockType());
+                    } else {
+                        Debug.Log("null");
+                    }
+                }*/
     }
 
     private void FixedUpdate() {
