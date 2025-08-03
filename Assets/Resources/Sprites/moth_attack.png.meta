@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 606cfabdd76a9fd40aca2bf81c4acd7e
+guid: d32180072d3ec5544affd8834268aeac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1827705007955046480
-    second: moth_jump_0
+      213: 929018875112641694
+    second: moth_attack_0
   - first:
-      213: -6078851916678375457
-    second: moth_jump_1
+      213: 8612942294765903123
+    second: moth_attack_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,6 +100,32 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -116,7 +142,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moth_jump_0
+      name: moth_attack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0bf03a69affa2a6e0800000000000000
-      internalID: -1827705007955046480
+      spriteID: e94d8b8aeb984ec00800000000000000
+      internalID: 929018875112641694
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moth_jump_1
+      name: moth_attack_1
       rect:
         serializedVersion: 2
         x: 60
@@ -151,10 +177,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8664391b31d5b6c4f844b90bfa936694
-      internalID: -6078851916678375457
+      spriteID: 31d957e3261578770800000000000000
+      internalID: 8612942294765903123
       vertices: []
       indices: 
       edges: []
@@ -163,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 810f462ca447815449be8d0eaf7dd14d
+    spriteID: 017eb6018120a6b4081101a172e0da6d
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      moth_jump_0: -1827705007955046480
-      moth_jump_1: -6078851916678375457
+      moth_attack_0: 929018875112641694
+      moth_attack_1: 8612942294765903123
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

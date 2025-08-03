@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     private float attackTimer = ATTACK_COOLDOWN;
     private bool canJump = false;
     private float jumpLevelIndex = 2;
-    private float[] jumpLevels = { 0,350f,400f,440f, 550f, 600f, 750f, 800f, 850f, 900f};
+    private float[] jumpLevels = { 0,350f,400f,440f,600f, 650f, 750f, 800f, 850f, 900f};
     //private float attackTimer = ATTACK_COOLDOWN;
 
 

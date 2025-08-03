@@ -1,22 +1,13 @@
 fileFormatVersion: 2
-guid: 09c973ed90897024497a400fd72631c3
+guid: 606cfabdd76a9fd40aca2bf81c4acd7e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6833758318297532234
-    second: moth_idle_0
+      213: -1827705007955046480
+    second: moth_jump_0
   - first:
-      213: 4932347765366193956
-    second: moth_idle_1
-  - first:
-      213: -9178624593713433743
-    second: moth_idle_2
-  - first:
-      213: -4606899723102003823
-    second: moth_idle_3
-  - first:
-      213: 1036275811424067168
-    second: moth_idle_4
+      213: -6078851916678375457
+    second: moth_jump_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -121,16 +112,42 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moth_idle_0
+      name: moth_jump_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 50
+        width: 60
         height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -140,19 +157,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b8310d240d9921a0800000000000000
-      internalID: -6833758318297532234
+      spriteID: 0bf03a69affa2a6e0800000000000000
+      internalID: -1827705007955046480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: moth_idle_1
+      name: moth_jump_1
       rect:
         serializedVersion: 2
-        x: 50
+        x: 60
         y: 0
-        width: 50
+        width: 60
         height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -160,76 +177,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 42ff75fe828337440800000000000000
-      internalID: 4932347765366193956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_idle_2
-      rect:
-        serializedVersion: 2
-        x: 100
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 173fb0dff89fe9080800000000000000
-      internalID: -9178624593713433743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_idle_3
-      rect:
-        serializedVersion: 2
-        x: 150
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 19dd8a83c110110c0800000000000000
-      internalID: -4606899723102003823
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: moth_idle_4
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 0
-        width: 50
-        height: 50
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 06ed24d2c57916e00800000000000000
-      internalID: 1036275811424067168
+      spriteID: 8664391b31d5b6c4f844b90bfa936694
+      internalID: -6078851916678375457
       vertices: []
       indices: 
       edges: []
@@ -238,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 903e068013f79ac4395c992994a15531
+    spriteID: 810f462ca447815449be8d0eaf7dd14d
     internalID: 0
     vertices: []
     indices: 
@@ -248,11 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      moth_idle_0: -6833758318297532234
-      moth_idle_1: 4932347765366193956
-      moth_idle_2: -9178624593713433743
-      moth_idle_3: -4606899723102003823
-      moth_idle_4: 1036275811424067168
+      moth_jump_0: -1827705007955046480
+      moth_jump_1: -6078851916678375457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

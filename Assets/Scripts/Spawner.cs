@@ -25,7 +25,8 @@ public class Spawner : MonoBehaviour
     }
 
     private void Spawn() {
-        Instantiate(enemeyPrefab, this.transform);
+        Transform enemy = Instantiate(enemeyPrefab, this.transform);
+        enemy.localScale = 1.2f * size * Vector3.one;
         spawnCount++;
     }
 
