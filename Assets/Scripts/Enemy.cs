@@ -33,10 +33,12 @@ public class Enemy : MonoBehaviour {
         // Move the object
         transform.position += Vector3.right * direction * speed * Time.deltaTime;
 
-        if(transform.forward.x > 0) {
-            sprite.flipX = true;
-        }else if(transform.forward.x < 0) { 
-            sprite.flipX = false; }
+        if (direction < 0) {
+            sprite.flipX = false; // Or true, if you want right to be flipped
+        }
+        else if (direction > 0) {
+            sprite.flipX = true;  // Or false, adjust for your art
+        }
 
         // If out of bounds, reverse direction
         if (Mathf.Abs(transform.position.x - startPos.x) > distance) {

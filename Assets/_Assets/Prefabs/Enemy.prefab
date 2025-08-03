@@ -153,7 +153,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &347034212964608700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79f1f8876d933d488ef795eaa1c0435, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trueBlockPrefab: {fileID: 7407358809345887335, guid: 68c76a11d9a649a4a873e29419ab935a, type: 3}
+  falseBlockPrefab: {fileID: 7407358809345887335, guid: 16b842f70c9a2cd439584f636c86f97b, type: 3}
+  numBlockPrefab: {fileID: 7407358809345887335, guid: 01bdd4f8f71c1a34b9591c457bd16e7d, type: 3}
+  trueBlockChance: 0.3
+  falseBlockChance: 0.4
   speed: 2
   distance: 3
   minSwitchTime: 1
