@@ -7,8 +7,7 @@ public interface IBlock {
     public void OnPickup() {
         Player.Instance.SetItem(this);
     }
-
-
+  
 }
 
 public class BooleanBlock : IBlock {

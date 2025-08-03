@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private const int JUMP_POWER = 440;
     private const float GROUND_CHECK_RADIUS = 0.2f;
     private const float ATTACK_COOLDOWN = 1.5f;
+    private bool canJump = false;
     //private float attackTimer = ATTACK_COOLDOWN;
 
 
@@ -74,11 +75,20 @@ public class Player : MonoBehaviour
         if(item != null){
             Collider2D collider = Physics2D.OverlapCircle(InteractCheck.position, GROUND_CHECK_RADIUS, interactLayer);
             bool hit = collider != null; // true if something was found
-            CodeLineInteractable blockSlot = null;
+            IInteractableCodeLine blockSlot = null;
 
             if (hit) {
-                blockSlot = collider.gameObject.GetComponent<CodeLineInteractable>();
-                bool itemUsed = blockSlot.TrySetText(item);
+                blockSlot = collider.gameObject.GetComponent<IInteractableCodeLine>();
+                    /*bool isBool = collider.gameObject.TryGetComponent<BooleanCodeLineInteracable>(out blockSlot);
+                    if (isBool) {
+                        blockSlot = collider.gameObject.GetComponent<BooleanCodeLineInteracable>() as BooleanCodeLineInteracable;
+                    }
+                    else { 
+                         blockSlot = collider.gameObject.GetComponent<NumberCodeLineInteractable>() as NumberCodeLineInteractable;
+                    }*/
+
+
+                    bool itemUsed = blockSlot.TrySetText(item);
                 if (itemUsed) {
                     item = null;
                     Debug.Log("item used");
@@ -140,8 +150,11 @@ public class Player : MonoBehaviour
     }
 
     private void GameInput_OnJumpInput(object sender, EventArgs e) {
-        jump = true;
-        OnJump?.Invoke(this, EventArgs.Empty);
+        if (canJump) {
+
+            jump = true;
+            OnJump?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     public void SetItem(IBlock item) {
@@ -150,6 +163,10 @@ public class Player : MonoBehaviour
 
     public float GetMoveInput() {
         return moveInput;
+    }
+
+    public void SetCanJump(bool value) {
+        canJump = value;
     }
 
 }

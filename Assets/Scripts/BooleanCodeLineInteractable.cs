@@ -3,12 +3,12 @@ using System;
 using TMPro;
 using UnityEngine.Events;
 
-public class CodeLineInteractable : MonoBehaviour
-{
+public class BooleanCodeLineInteracable : MonoBehaviour, IInteractableCodeLine {
     private bool currentValue = false;
 
-    public UnityEvent<float> OnSuccessEvent;
-    private BlockType validType = BlockType.Number;
+    public UnityEvent<Boolean> OnSuccessEvent;
+
+    private BlockType validType = BlockType.Boolean;
 
     private TextMeshProUGUI textMeshPro;
 
@@ -20,39 +20,39 @@ public class CodeLineInteractable : MonoBehaviour
 
         if (valid) {
 
-            textMeshPro.text = block.GetValue().ToString();
+            textMeshPro.text = block.GetValue().ToString().ToLower();
 
 
-            float value = (float)block.GetValue();
+            bool value = (bool)block.GetValue();
             OnSuccessEvent?.Invoke(value);
         }
         return valid;
 
-  }
+    }
 
 
 
 
-  //OnSuccess?.Invoke(this, EventArgs.Empty);
+    //OnSuccess?.Invoke(this, EventArgs.Empty);
 
 
-  /*if(block.GetBlockType() == BlockType.Boolean ) {
-      bool value = (bool)block.GetValue();
+    /*if(block.GetBlockType() == BlockType.Boolean ) {
+        bool value = (bool)block.GetValue();
 
-      OnSuccess?.Invoke(this, new SceneController.OnSuccessEventArgsBool {
-          value = value
-      }) ;
-  } else if(block.GetBlockType() == BlockType.Number ) {
-      int value = (int)block.GetValue();
+        OnSuccess?.Invoke(this, new SceneController.OnSuccessEventArgsBool {
+            value = value
+        }) ;
+    } else if(block.GetBlockType() == BlockType.Number ) {
+        int value = (int)block.GetValue();
 
 
-      OnSuccess?.Invoke(this, new SceneController.OnSuccessEventArgsNum {
-          value = value
-      });
-  }
-*/
+        OnSuccess?.Invoke(this, new SceneController.OnSuccessEventArgsNum {
+            value = value
+        });
+    }
+  */
 
-    
+
     public bool GetCurrentValue() {
         return currentValue;
     }

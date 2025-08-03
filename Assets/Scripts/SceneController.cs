@@ -11,8 +11,6 @@ public class SceneController : MonoBehaviour
 
     [SerializeField] private GameObject spawner;
 
-    private bool playerActive = false;
-    private float timer = 5f;
     //[SerializeField] private GameObject blockSLot;
 /*    public class OnSuccessEventArgsBool : EventArgs {
         public bool value;
@@ -25,8 +23,6 @@ public class SceneController : MonoBehaviour
 
 
     
-
-    private CodeLineInteractable script;
     public static SceneController Instance { get; private set; }
 
     private void Awake() {
@@ -48,6 +44,10 @@ public class SceneController : MonoBehaviour
             }
         }*/
     }
+
+    public void OnActivateJump(bool value) {
+        Player.Instance.SetCanJump(value);
+    }
     public void CodeLine_OnSuccess(bool value) {
 
         SetSpawner(value);
@@ -58,7 +58,7 @@ public class SceneController : MonoBehaviour
         Debug.Log(interval);
     }
     private void CodeLine_OnSucess(object sender, EventArgs e) {
-        CodeLineInteractable codeLine = (CodeLineInteractable) sender;
+        BooleanCodeLineInteracable codeLine = (BooleanCodeLineInteracable) sender;
 
         SetSpawner(codeLine.GetCurrentValue());
     }

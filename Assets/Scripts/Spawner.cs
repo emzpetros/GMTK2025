@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour
     private float spawnTimer;
     private int spawnMax = 5;
     private int spawnCount = 0;
-
+    private float size = 1;
     private void Start() {
         spawnTimer = spawnInterval;
     }
@@ -31,5 +31,9 @@ public class Spawner : MonoBehaviour
 
     public void SetTimer(float interval) {
         spawnInterval = interval;
+    }
+
+    public void SetSize(float size) {
+        this.size = size;
     }
 }
