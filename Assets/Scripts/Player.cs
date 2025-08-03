@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEditor.Events;
 using UnityEngine.Events;
 
 public class Player : MonoBehaviour

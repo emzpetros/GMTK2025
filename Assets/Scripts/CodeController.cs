@@ -2,7 +2,6 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.Animations;
 
 [ExecuteInEditMode]
 
@@ -53,7 +52,7 @@ public class CodeController : MonoBehaviour {
         CodeLine[] childrenTmp = GetComponentsInChildren<CodeLine>();
         int childrenCount = childrenTmp.Length;
 
-        foreach (var child in childrenTmp) {
+/*        foreach (var child in childrenTmp) {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
                 DestroyImmediate(child.gameObject);
@@ -62,7 +61,7 @@ public class CodeController : MonoBehaviour {
 #else
             Destroy(obj);
 #endif
-        }
+        }*/
     }
   /*  public void UpdateCodeLines() {
         CodeLine[] codeLineScripts = GetComponentsInChildren<CodeLine>();
@@ -81,7 +80,7 @@ public class CodeController : MonoBehaviour {
     public void GenerateCodeLines() {
         ClearCodeLines() ;
         // Clear previous lines
-        foreach (var obj in currentCodeLines) {
+/*        foreach (var obj in currentCodeLines) {
 #if UNITY_EDITOR
             if (!Application.isPlaying)
                 DestroyImmediate(obj);
@@ -90,7 +89,7 @@ public class CodeController : MonoBehaviour {
 #else
             Destroy(obj);
 #endif
-        }
+        }*/
         currentCodeLines.Clear();
 
         for (int i = 0; i < codeLines.Count; i++) {
