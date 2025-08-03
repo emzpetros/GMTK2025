@@ -11,11 +11,14 @@ public class Player : MonoBehaviour
     public EventHandler OnJump;
     public EventHandler OnLand;
     public EventHandler OnDeath;
+    public EventHandler OnAllowedAttack;
+    public EventHandler OnAttackCooldown;
 
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform InteractCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask interactLayer;
+
 
     private GameInput gameInput;
 
@@ -30,7 +33,10 @@ public class Player : MonoBehaviour
     private const int JUMP_POWER = 440;
     private const float GROUND_CHECK_RADIUS = 0.2f;
     private const float ATTACK_COOLDOWN = 1.5f;
+    private float attackTimer = ATTACK_COOLDOWN;
     private bool canJump = false;
+    private float jumpLevelIndex = 2;
+    private float[] jumpLevels = { 0,350f,400f,440f, 500f, 550f, 600f, 650f, 700f, 750f};
     //private float attackTimer = ATTACK_COOLDOWN;
 
 
@@ -40,6 +46,7 @@ public class Player : MonoBehaviour
 
     private const float PLAYER_ACTIVE_DELAY = 1f;
 
+    private bool canUncomment = false;
     private void Awake() {
         if(Instance != null) {
             Debug.LogError("More than one player instance");
@@ -110,11 +117,26 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnAttackInput(object sender, EventArgs e) {
         if(canAttack) {
-            Debug.Log("Attack!");
+            /*          if{ canUncomment && collidingWithBreak}
+                      {
+
+                      }*/
+            Debug.Log("attack");
+            OnAllowedAttack?.Invoke(this, e);
             canAttack = false;
+
+        } else {
+           // OnAttackCooldown?.Invoke(this, e);  
         }
     }
     private void Update() {
+        if (!canAttack) {
+            attackTimer -= Time.deltaTime;
+            if(attackTimer < 0) { 
+                attackTimer = ATTACK_COOLDOWN;
+                canAttack = true;
+            }
+        }
 
         // Debug.Log(rigidBody.linearVelocity);
 
@@ -140,7 +162,7 @@ public class Player : MonoBehaviour
 
         if(grounded && jump) {
             grounded = false;
-            rigidBody.AddForceY(JUMP_POWER);
+            rigidBody.AddForceY(jumpLevels[(int)jumpLevelIndex]);
         }
 
         jump = false;
@@ -174,5 +196,13 @@ public class Player : MonoBehaviour
 
     public void death() {
         OnDeath?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void SetBreakAbility(bool state) {
+        this.canUncomment = state;
+    }
+
+    public void SetJumpLevel(float level) {
+        this.jumpLevelIndex = level;
     }
 }

@@ -57,4 +57,8 @@ public class Enemy : MonoBehaviour {
             Player.Instance.death();
         }
     }
+
+    public void death() {
+       //animate, drop item
+    }
 }
