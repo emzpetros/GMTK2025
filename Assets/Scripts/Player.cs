@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     private const int MOVE_SPEED = 3;
     private const int JUMP_POWER = 440;
     private const float GROUND_CHECK_RADIUS = 0.2f;
-    private const float ATTACK_COOLDOWN = 1.5f;
+    private const float ATTACK_COOLDOWN = 0.5f;
     private float attackTimer = ATTACK_COOLDOWN;
     private bool canJump = false;
     private float jumpLevelIndex = 2;
@@ -123,13 +123,14 @@ public class Player : MonoBehaviour
         if (canAttack) {
 
             CircleCollider2D attackCollider = attackPoint.gameObject.GetComponent<CircleCollider2D>();
-            Collider2D[] hits = Physics2D.OverlapBoxAll(attackCollider.bounds.center, attackCollider.bounds.size, 0f);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(attackCollider.bounds.center, attackCollider.radius);
             Debug.Log("attack");
             OnAttack?.Invoke(this, e);
             foreach (var hit in hits) {
+                Debug.Log("HIT: " + hit.gameObject.name);
                 if (hit.CompareTag("Enemy")) {
                     hit.GetComponent<Enemy>().death();
-                    Debug.Log("Kill");
+                    
                     OnAttackedEnemy?.Invoke(this, EventArgs.Empty);
                 }
                 else if (hit.CompareTag("Break")) {
@@ -152,10 +153,10 @@ public class Player : MonoBehaviour
         }
 
         if (moveInput > 0) {
-            attackPoint.transform.localPosition = new Vector3(-0.259f + shiftAmount, -0.054f, 0);
+            attackPoint.transform.localPosition = new Vector3(-0.397f + shiftAmount, -0.054f, 0);
         }
         else if (moveInput < 0) {
-            attackPoint.transform.localPosition = new Vector3(-0.259f, -0.054f, 0);
+            attackPoint.transform.localPosition = new Vector3(-0.397f, -0.054f, 0);
         }
 
         // Debug.Log(rigidBody.linearVelocity);

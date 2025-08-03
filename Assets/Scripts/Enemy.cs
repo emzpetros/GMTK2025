@@ -13,15 +13,15 @@ public class Enemy : MonoBehaviour {
     [Range(0, 1)] public float falseBlockChance = 0.4f;  // Example: 40%
     // The remainder is for numBlockPrefab
 
-    public float speed = 0.5f;              // Movement speed, adjustable in Inspector
-    public float distance = 3f;           // Distance to move from start point
-    public float minSwitchTime = 3f;      // Minimum time before switching direction
-    public float maxSwitchTime = 5f;      // Maximum time before switching direction
+    private float speed = 0.5f;              // Movement speed, adjustable in Inspector
+    private float distance = 3f;           // Distance to move from start point
+    private float minSwitchTime = 3f;      // Minimum time before switching direction
+    private float maxSwitchTime = 5f;      // Maximum time before switching direction
 
     private Vector3 startPos;
     private int direction = 1;            // 1 for right, -1 for left
     private float switchTimer;
-
+    private bool alive = true;
     void Start() {
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -30,29 +30,33 @@ public class Enemy : MonoBehaviour {
     }
 
     void Update() {
-        // Move the object
-        transform.position += Vector3.right * direction * speed * Time.deltaTime;
 
-        if (direction < 0) {
-            sprite.flipX = false; // Or true, if you want right to be flipped
-        }
-        else if (direction > 0) {
-            sprite.flipX = true;  // Or false, adjust for your art
-        }
+        if (alive) {
+            // Move the object
+            transform.position += Vector3.right * direction * speed * Time.deltaTime;
 
-        // If out of bounds, reverse direction
-        if (Mathf.Abs(transform.position.x - startPos.x) > distance) {
-            direction *= -1;
-            ClampToRange();
-            SetRandomSwitchTime();
-        }
+            if (direction < 0) {
+                sprite.flipX = false; // Or true, if you want right to be flipped
+            }
+            else if (direction > 0) {
+                sprite.flipX = true;  // Or false, adjust for your art
+            }
 
-        // Timer for random direction change
-        switchTimer -= Time.deltaTime;
-        if (switchTimer <= 0f) {
-            direction *= -1; // Switch direction randomly
-            SetRandomSwitchTime();
+            // If out of bounds, reverse direction
+            if (Mathf.Abs(transform.position.x - startPos.x) > distance) {
+                direction *= -1;
+                ClampToRange();
+                SetRandomSwitchTime();
+            }
+
+            // Timer for random direction change
+            switchTimer -= Time.deltaTime;
+            if (switchTimer <= 0f) {
+                direction *= -1; // Switch direction randomly
+                SetRandomSwitchTime();
+            }
         }
+       
     }
 
     void SetRandomSwitchTime() {
@@ -66,12 +70,17 @@ public class Enemy : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.name == "Player") {
-            Player.Instance.death();
+        if (alive){
+            if (collision.gameObject.name == "Player") {
+                Player.Instance.death();
+            }
         }
+        
     }
 
     public void death() {
+        alive = false;
+        Debug.Log("enemy die");
         StartCoroutine(DeathEffects());
 
 
@@ -83,6 +92,7 @@ public class Enemy : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         DropRandomBlock(); // Spawn one of the prefabs here
 
+        yield return new WaitForSeconds(0.5f);
         Destroy(this.gameObject);
     }
 
