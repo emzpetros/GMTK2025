@@ -26,10 +26,19 @@ public class Enemy : MonoBehaviour {
     private int direction = 1;            // 1 for right, -1 for left
     private float switchTimer;
     private bool alive = true;
+    private float initialDelay;
+
     void Start() {
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         startPos = transform.position;
+        initialDelay = UnityEngine.Random.Range(0f, 2f);
+        StartCoroutine(DelayedSwitchTimerStart());
+
+    }
+
+    IEnumerator DelayedSwitchTimerStart() {
+        yield return new WaitForSeconds(initialDelay);
         SetRandomSwitchTime();
     }
 
@@ -37,6 +46,8 @@ public class Enemy : MonoBehaviour {
 
         if (alive) {
             // Move the object
+            direction = UnityEngine.Random.value < 0.5f ? 1 : -1;
+
             transform.position += Vector3.right * direction * speed * Time.deltaTime;
 
             if (direction < 0) {

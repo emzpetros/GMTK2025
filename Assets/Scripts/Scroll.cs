@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIScrollDown : MonoBehaviour {
     [Tooltip("Speed at which the UI object scrolls down (units per second)")]
@@ -17,6 +18,10 @@ public class UIScrollDown : MonoBehaviour {
         if (rectTransform != null) {
             // Move downward by scrollSpeed pixels per second
             rectTransform.anchoredPosition -= Vector2.down * scrollSpeed * Time.deltaTime;
+        }
+
+        if(this.rectTransform.position.y > 1800) {
+            SceneManager.LoadScene("Start");
         }
     }
 }

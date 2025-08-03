@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GameObject.DontDestroyOnLoad(this);
         Player.Instance.OnAttack += Player_OnAttack;
         Player.Instance.OnDeath += Player_OnDeath;
         Player.Instance.OnJump += Player_OnJump;

@@ -1,7 +1,6 @@
 using NUnit.Framework;
 using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,7 +44,7 @@ public class Player : MonoBehaviour
     private float attackTimer = ATTACK_COOLDOWN;
     private bool canJump = false;
     private float jumpLevelIndex = 2;
-    private float[] jumpLevels = { 0,350f,400f,440f,600f, 650f, 750f, 800f, 850f, 900f};
+    private float[] jumpLevels = { 0,350f,400f,440f,600f, 650f, 800f, 850f, 900f, 950f};
     //private float attackTimer = ATTACK_COOLDOWN;
 
 
